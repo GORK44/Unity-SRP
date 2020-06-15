@@ -5,16 +5,17 @@ public class PerObjectMaterialProperties : MonoBehaviour
 {
 
     static int baseColorId = Shader.PropertyToID("_BaseColor");
-    static int cutoffId = Shader.PropertyToID("_Cutoff");
+    static int cutoffId = Shader.PropertyToID("_Cutoff"),
+        metallicId = Shader.PropertyToID("_Metallic"),
+        smoothnessId = Shader.PropertyToID("_Smoothness");
 
     static MaterialPropertyBlock block;
 
     [SerializeField]
     Color baseColor = Color.white;
 
-    [SerializeField, Range(0f, 1f)] //裁剪
-    float cutoff = 0.5f;
-
+    [SerializeField, Range(0f, 1f)]
+    float alphaCutoff = 0.5f, metallic = 0f, smoothness = 0.5f; //裁剪，金属度，光滑度
 
 
     void OnValidate()
@@ -24,7 +25,9 @@ public class PerObjectMaterialProperties : MonoBehaviour
             block = new MaterialPropertyBlock();
         }
         block.SetColor(baseColorId, baseColor);
-        block.SetFloat(cutoffId, cutoff);  //裁剪
+        block.SetFloat(cutoffId, alphaCutoff);  //裁剪
+        block.SetFloat(metallicId, metallic);
+        block.SetFloat(smoothnessId, smoothness);
         GetComponent<Renderer>().SetPropertyBlock(block);
     }
 

@@ -2,7 +2,8 @@
 #define CUSTOM_COMMON_INCLUDED
 
 
-
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
 #include "UnityInput.hlsl"
 
 
@@ -41,6 +42,16 @@ float4 TransformObjectToHClip(float3 positionOS)   //模型空间到裁剪空间
 */
 //=====================
 //以上方法也包含在：#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"
+
+
+
+
+float Square (float v) {
+    return v * v;  //平方
+}
+
+
+
 
 
 

@@ -3,7 +3,7 @@
 
 
 #include "../ShaderLibrary/Common.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+//#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
 
 
 //批处理用

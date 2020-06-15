@@ -17,10 +17,12 @@ public partial class CameraRenderer
         name = bufferName
     };
 
-    static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
+    static ShaderTagId
+        unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit"),
+        litShaderTagId = new ShaderTagId("CustomLit");
 
 
-
+    Lighting lighting = new Lighting();
 
 
     public void Render(ScriptableRenderContext context, Camera camera,
@@ -38,6 +40,7 @@ public partial class CameraRenderer
         }
 
         Setup(); //设定
+        lighting.Setup(context, cullingResults); //绘制前设置光照
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         DrawUnsupportedShaders();//绘制不受支持的shader
         DrawGizmos();//绘制视锥体辅助线，相机图标，灯光图标等
@@ -63,6 +66,8 @@ public partial class CameraRenderer
             enableDynamicBatching = useDynamicBatching,  //动态批处理
             enableInstancing = useGPUInstancing  //GPU实例化
         };
+        drawingSettings.SetShaderPassName(1, litShaderTagId);
+
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque); //渲染队列范围.不透明
 
         context.DrawRenderers(
