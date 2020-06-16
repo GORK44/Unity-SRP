@@ -6,23 +6,6 @@
 //#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
 
 
-//批处理用
-/*
-cbuffer UnityPerMaterial {
-    float4 _BaseColor;
-}
-*/
-
-TEXTURE2D(_BaseMap);
-SAMPLER(sampler_BaseMap); //纹理采样
-
-//实例化
-UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
-    UNITY_DEFINE_INSTANCED_PROP(float4, _BaseMap_ST)
-    UNITY_DEFINE_INSTANCED_PROP(float4, _BaseColor)
-    UNITY_DEFINE_INSTANCED_PROP(float, _Cutoff)
-UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
-
 
 
 struct Attributes {     //用作vs的输入
