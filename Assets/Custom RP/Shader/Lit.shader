@@ -30,6 +30,7 @@
             #pragma target 3.5 //避免为编译OpenGL ES 2.0
             #pragma shader_feature _CLIPPING  //裁剪
             #pragma shader_feature _PREMULTIPLY_ALPHA //预乘透明度（diffuse）
+            #pragma multi_compile _ LIGHTMAP_ON //光照贴图
             #pragma multi_compile_instancing  //实例化
             #pragma vertex LitPassVertex
             #pragma fragment LitPassFragment

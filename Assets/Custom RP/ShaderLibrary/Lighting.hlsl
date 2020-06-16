@@ -15,8 +15,10 @@ float3 GetLighting (Surface surface, BRDF brdf, Light light) {
 }
 
 
-float3 GetLighting (Surface surface, BRDF brdf) {
-    float3 color = 0.0;
+float3 GetLighting (Surface surface, BRDF brdf, GI gi) {
+    
+    //float3 color = 0.0;
+    float3 color = gi.diffuse;
     
     for (int i = 0; i < GetDirectionalLightCount(); i++) {
         color += GetLighting(surface, brdf, GetDirectionalLight(i));
