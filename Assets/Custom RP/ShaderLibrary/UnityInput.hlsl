@@ -29,6 +29,8 @@ cbuffer UnityPerDraw {
     bool4 unity_MetaFragmentControl;
     float unity_OneOverOutputBoost;
     float unity_MaxOutputValue;
+
+    float4 unity_SpecCube0_HDR;
 }
 
 float4x4 unity_MatrixVP;

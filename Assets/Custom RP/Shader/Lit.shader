@@ -11,6 +11,7 @@
 
         _Metallic ("Metallic", Range(0, 1)) = 0  //金属度
         _Smoothness ("Smoothness", Range(0, 1)) = 0.5  //光滑度
+        _Fresnel ("Fresnel", Range(0, 1)) = 1  //菲涅尔
 
         [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha ("Premultiply Alpha", Float) = 0 //diffuse乘透明度
     }

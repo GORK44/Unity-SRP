@@ -10,19 +10,19 @@ float3 GetIncomingLight (Surface surface, Light light) {
 }
 
 
-float3 GetLighting (Surface surface, BRDF brdf, Light light) {
-    return GetIncomingLight(surface, light) * DirectBRDF(surface, brdf, light);
+float3 GetLighting1 (Surface surfaceWS, BRDF brdf, Light light) {
+    return GetIncomingLight(surfaceWS, light) * DirectBRDF(surfaceWS, brdf, light);
 }
 
 
-float3 GetLighting (Surface surface, BRDF brdf, GI gi) {
+float3 GetLighting (Surface surfaceWS, BRDF brdf, GI gi) {
     
-    //float3 color = 0.0;
-    float3 color = gi.diffuse * brdf.diffuse;
+    //float3 color = gi.diffuse * brdf.diffuse;
+    float3 color = IndirectBRDF(surfaceWS, brdf, gi.diffuse, gi.specular);
 
     
     for (int i = 0; i < GetDirectionalLightCount(); i++) {
-        color += GetLighting(surface, brdf, GetDirectionalLight(i));
+        color += GetLighting1(surfaceWS, brdf, GetDirectionalLight(i));
     }
     
     return color;
